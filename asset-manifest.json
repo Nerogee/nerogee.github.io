@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/task/static/css/main.6da488fc.chunk.css",
-    "main.js": "/task/static/js/main.63f82853.chunk.js",
-    "main.js.map": "/task/static/js/main.63f82853.chunk.js.map",
-    "runtime~main.js": "/task/static/js/runtime~main.f79bd0da.js",
-    "runtime~main.js.map": "/task/static/js/runtime~main.f79bd0da.js.map",
-    "static/css/2.0194576d.chunk.css": "/task/static/css/2.0194576d.chunk.css",
-    "static/js/2.05f0c144.chunk.js": "/task/static/js/2.05f0c144.chunk.js",
-    "static/js/2.05f0c144.chunk.js.map": "/task/static/js/2.05f0c144.chunk.js.map",
-    "index.html": "/task/index.html",
-    "precache-manifest.cfddca22f72dc95ac657f3ecef1d64a9.js": "/task/precache-manifest.cfddca22f72dc95ac657f3ecef1d64a9.js",
-    "service-worker.js": "/task/service-worker.js",
-    "static/css/2.0194576d.chunk.css.map": "/task/static/css/2.0194576d.chunk.css.map",
-    "static/css/main.6da488fc.chunk.css.map": "/task/static/css/main.6da488fc.chunk.css.map",
-    "static/media/slick-theme.css": "/task/static/media/slick.f97e3bbf.svg",
-    "static/media/star_emtpy.png": "/task/static/media/star_emtpy.6f373829.png",
-    "static/media/star_fill.png": "/task/static/media/star_fill.0178cc98.png"
+    "main.css": "/static/css/main.14112e7e.chunk.css",
+    "main.js": "/static/js/main.1b6c6b59.chunk.js",
+    "main.js.map": "/static/js/main.1b6c6b59.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.18585a14.chunk.css": "/static/css/2.18585a14.chunk.css",
+    "static/js/2.c1c58a74.chunk.js": "/static/js/2.c1c58a74.chunk.js",
+    "static/js/2.c1c58a74.chunk.js.map": "/static/js/2.c1c58a74.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.4c0ed1969c262e85a65c2c334de92686.js": "/precache-manifest.4c0ed1969c262e85a65c2c334de92686.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.18585a14.chunk.css.map": "/static/css/2.18585a14.chunk.css.map",
+    "static/css/main.14112e7e.chunk.css.map": "/static/css/main.14112e7e.chunk.css.map",
+    "static/media/slick-theme.css": "/static/media/slick.f97e3bbf.svg",
+    "static/media/star_emtpy.png": "/static/media/star_emtpy.6f373829.png",
+    "static/media/star_fill.png": "/static/media/star_fill.0178cc98.png"
   }
 }
