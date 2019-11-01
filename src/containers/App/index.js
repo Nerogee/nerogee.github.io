@@ -11,101 +11,28 @@ import API from "../../config/endpoint";
 import { fetchAppListFromLocalStorage } from "../../utils/Utils";
 import { APP_LIST_TIME_TO_LIVE } from "../../config/settings";
 import "../../assets/css/app/index.scss";
+import {BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import Home from "./home";
+import Test from "./test";
+
+
 
 class App extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            pageNumber: 1,
-            haveMoreApp: true
-        }
-        this.fetchAppList = this.fetchAppList.bind(this);
-    }
-
-    rootScrollContainer = React.createRef();
-
-    componentDidMount() {
-        this.fetchAppList();
-        this.rootScrollContainer.current.addEventListener("scroll", () => {
-            if (this.rootScrollContainer.current.scrollTop + this.rootScrollContainer.current.clientHeight + 100 >=this.rootScrollContainer.current.scrollHeight){
-                if (this.state.haveMoreApp) {
-                    this.fetchAppList();
-                }
-            }
-        })
-    }
-
-    componentWillUnmount() {
-        this.rootScrollContainer.current.removeAllListeners();
-    }
-
-    fetchAppList(){
-        if (this.props.listing.preventLoading || this.props.app.isLoading || !this.state.haveMoreApp) return false;
-        this.props.updateLoading(true);
-
-        // start: get app list from local cache if exist
-        let cachedAppList = fetchAppListFromLocalStorage(this.state.pageNumber);
-        if (cachedAppList.length > 0) {
-            let newAppList = Object.assign([], [...this.props.listing.appList]).concat(cachedAppList);
-            this.props.updateAppList(newAppList);
-            this.setState({
-                pageNumber:this.state.pageNumber+1,
-                haveMoreApp: newAppList.length < localStorage.getItem('totalRecord')
-            });
-            this.props.updateLoading(false);
-            return false;
-        }
-        // end
-
-        fetch(API.APP_LIST, {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                pageNumber: this.state.pageNumber
-            })
-        }).then(response => response.json().then(json=>({
-                header: response,
-                json
-            })
-        )).then(({header, json}) => {
-            if (!header.ok) {
-                alert("Fetch App List Fail");
-            } else {
-                let appList = Object.assign([], [...this.props.listing.appList]).concat(json.list);
-                this.props.updateAppList(appList);
-                this.setState({
-                    pageNumber:this.state.pageNumber+1,
-                    haveMoreApp: json.haveMoreApp
-                });
-
-                localStorage.setItem('cacheAppList', JSON.stringify(appList));
-                localStorage.setItem('totalRecord', json.totalRecord);
-                localStorage.setItem('appListExpireAt', Date.now() + APP_LIST_TIME_TO_LIVE);
-            }
-            this.props.updateLoading(false);
-
-        }).catch (error => {
-            this.props.updateLoading(false);
-            alert("Fetch App List Fail");
-        })
-    }
-
     render() {
         return (
-            <div className="app-wrapper">
-                <Search/>
-                <div className="app-scroll-wrapper" ref={this.rootScrollContainer}>
-                    <Recommendation/>
-                    <Listing pageNumber={this.state.pageNumber} rootScrollContainer={this.rootScrollContainer.current} />
-                </div>
-                <div className="app-wrapper__loading-indicator">
-                    { this.props.app.isLoading ? <Spinner/> : null }
-                </div>
-            </div>
+            <Router>
+                <nav style={{ padding:10, zIndex:999, width:"100%", height: "30px", position: "fixed", backgroundColor:"white" }}>
+                    <NavLink to='/' exact style={{ padding: 10 }} activeClassName='active'>
+                        Home
+                    </NavLink>
+
+                    <NavLink to='/test' exact style={{ padding: 10 }} activeClassName='active'>
+                        TEST
+                    </NavLink>
+                </nav>
+                <Route path='/' exact component={Home} />
+                <Route path='/test' exact component={Test} />
+            </Router>
         )
     }
 }

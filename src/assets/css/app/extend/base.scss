@@ -1,4 +1,17 @@
 body {
+  a {
+    padding: 10px;
+  }
+
+  a,
+  a:visited {
+    color: blue;
+  }
+
+  a.active {
+    color: red;
+  }
+
   .app-wrapper {
     position: relative;
     display: flex;
@@ -8,8 +21,9 @@ body {
     width: 100%;
     margin: 0 auto;
     .app-scroll-wrapper {
-      max-height: 700px;
-      overflow: auto;
+      //max-height: 700px;
+      //overflow: auto;
+      margin-top: 20px;
     }
     .app-wrapper__loading-indicator {
 
